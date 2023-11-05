@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AICTE Internship Registration</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .custom-container {
+            max-width: 600px; /* Set the maximum width of the container */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .card-title {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .card-body ol {
+            padding-left: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        /* Remove button hover effect */
+        .btn-primary:hover {
+            background-color: #007bff;
+        }
+
+        .success-message {
+            text-align: center;
+            display: none;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card-title {
+                font-size: 20px;
+            }
+            .btn-primary {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">EDUSKILLS virtual internship</h2>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <!-- Your steps here -->
+                    <li>AICTE-EduSkills virtual Internship cohort-6</li>
+                    <li>AICTE has extended the last date to apply for internship till 10th SEP 2023</li>
+                    <li>Fill out the registration form.</li>
+                    <li>Kindly inform all your students to apply for the internship ASAP.
+                    </li>
+                    <li>Click on the "Register" button.</li>
+                </ol>
+                <p>Here are the steps in detail:</p>
+                <ol>
+                    <li>Last Date for Registration:- 10th SEP 2023
+                    </li>
+                    <li>On the registration form, enter your name, email address, mobile number, and password.</li>
+                </ol>
+                <p>Once you have submitted the registration form, your application will be reviewed by EduSkills. If your application is approved, you will receive an email confirmation. You can then log in to the EduSkills portal using your email address and password.</p>
+                <button id="registerButton" class="btn btn-primary btn-block">Register Here</button>
+                <!-- Registration Form (Initially Hidden) -->
+                <form id="registrationForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Course</label>
+                        <input type="text" class="form-control" id="course" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="branch">Branch</label>
+                        <input type="text" class="form-control" id="branch" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rollnum">Roll Number</label>
+                        <input type="text" class="form-control" id="rollnum" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email (Gmail)</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="section">Section</label>
+                        <input type="text" class="form-control" id="section" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message">
+                    <p>Your details have been submitted successfully.</p>
+                    <p>Click <a href="https://internshipadmin.eduskillsfoundation.org/register">here</a> to continue with AICTE Internship registration.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include Bootstrap JS and jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Show the registration form when the "Register Here" button is clicked
+        document.getElementById('registerButton').addEventListener('click', function () {
+            document.getElementById('registerButton').style.display = 'none';
+            document.getElementById('registrationForm').style.display = 'block';
+        });
+        // Handle form submission
+        document.getElementById('registrationForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+            // Get user input values
+            const name = document.getElementById('name').value;
+            const course = document.getElementById('course').value;
+            const branch = document.getElementById('branch').value;
+            const rollnum = document.getElementById('rollnum').value;
+            const email = document.getElementById('email').value;
+            const section = document.getElementById('section').value;
+            // Check if any field is empty
+            if (!name || !course || !branch || !rollnum || !email || !section) {
+                alert('Please fill in all the details mawa vro.');
+                return;
+            }
+            // Construct the email subject and body
+            const subject = 'AICTE-EduSkills virtual Internship cohort-6 Details';
+            const body = `Name: ${name}\nCourse: ${course}\nBranch: ${branch}\nRoll Number: ${rollnum}\nEmail: ${email}\nSection: ${section}`;
+            // Construct the mailto URL
+            const mailtoURL = `mailto:mvsk9159@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            // Redirect to user's email client to send the email
+            window.location.href = mailtoURL;
+            // Display the success message and link to continue registration
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
